@@ -278,3 +278,38 @@ ReactDOM.render(
   document.getElementById('simple-banking-app')
 );
 ```
+
+### Update Package.json in scripts section
+```
+"build": "webpack --mode production --progress",
+```
+
+### Run Build
+Go to the root directory and run command and that will generate directory `public` and this has the web bundles which need to be hosted.
+```
+npm run buid
+```
+
+### This below is only for Github.io Demo not for the Real Time Development use case.
+Update `.gitignore` in the root.
+This is important to skip `node_modules` out of code repo.
+`public` line is removed now.
+```
+node_modules
+```
+
+### Publish in Github Pages.
+1. Go to your Repo.  
+2. Click on Settings.  
+3. Scroll to GitHub Pages.  
+
+![image](https://user-images.githubusercontent.com/1652629/95079465-3cdc2700-0749-11eb-8e62-a6b3e28029d3.png)
+
+#### Update `webpack.config.js` to generate Web build directory as `docs` so that GitHub will understand automatically.
+```
+output: {
+  path: path.resolve(__dirname, 'docs'),
+  filename: 'simple-banking-app.js',
+  chunkFilename: '[name].js'
+},
+```
