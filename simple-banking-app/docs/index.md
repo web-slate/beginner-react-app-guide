@@ -313,5 +313,7 @@ npm run build
 1. Go to your Repo.  
 2. Click on Settings.  
 3. Scroll to GitHub Pages.  
+4. Select Main branch and choose docs folder which contains index.html and click save
 
-![image](https://user-images.githubusercontent.com/1652629/95079465-3cdc2700-0749-11eb-8e62-a6b3e28029d3.png)
+![image](https://user-images.githubusercontent.com/1652629/95098812-b8e26900-0761-11eb-847b-9a3480d745ea.png)
+
