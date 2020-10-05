@@ -279,16 +279,7 @@ ReactDOM.render(
 );
 ```
 
-### Update Package.json in scripts section
-```
-"build": "webpack --mode production --progress",
-```
-
-### Run Build
-Go to the root directory and run command and that will generate directory `public` and this has the web bundles which need to be hosted.
-```
-npm run build
-```
+### This is only for GitHub Page Hosting
 
 ### This below is only for Github.io Demo not for the Real Time Development use case.
 Update `.gitignore` in the root.
@@ -298,13 +289,6 @@ This is important to skip `node_modules` out of code repo.
 node_modules
 ```
 
-### Publish in Github Pages.
-1. Go to your Repo.  
-2. Click on Settings.  
-3. Scroll to GitHub Pages.  
-
-![image](https://user-images.githubusercontent.com/1652629/95079465-3cdc2700-0749-11eb-8e62-a6b3e28029d3.png)
-
 #### Update `webpack.config.js` to generate Web build directory as `docs` so that GitHub will understand automatically.
 ```
 output: {
@@ -313,3 +297,21 @@ output: {
   chunkFilename: '[name].js'
 },
 ```
+
+### Update Package.json in scripts section
+```
+"build": "webpack --mode production --progress",
+```
+
+### Run Build
+Go to the root directory and run command and that will generate directory `docs` and this has the web bundles which need to be hosted.
+```
+npm run build
+```
+
+### Publish in Github Pages.
+1. Go to your Repo.  
+2. Click on Settings.  
+3. Scroll to GitHub Pages.  
+
+![image](https://user-images.githubusercontent.com/1652629/95079465-3cdc2700-0749-11eb-8e62-a6b3e28029d3.png)
