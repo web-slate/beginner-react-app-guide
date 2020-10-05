@@ -287,7 +287,7 @@ ReactDOM.render(
 ### Run Build
 Go to the root directory and run command and that will generate directory `public` and this has the web bundles which need to be hosted.
 ```
-npm run buid
+npm run build
 ```
 
 ### This below is only for Github.io Demo not for the Real Time Development use case.
