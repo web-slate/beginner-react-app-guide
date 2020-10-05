@@ -279,7 +279,7 @@ ReactDOM.render(
 );
 ```
 
-### This is only for GitHub Page Hosting
+## This is only for GitHub Page Hosting
 
 ### This below is only for Github.io Demo not for the Real Time Development use case.
 Update `.gitignore` in the root.
