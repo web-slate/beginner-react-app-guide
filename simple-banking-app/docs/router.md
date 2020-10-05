@@ -32,7 +32,7 @@ Note: `Switch` Component part is dynamic but h1 remains same even you redirect n
 export default function App() {
   return (
     <Fragment>
-      <Router history={browserHistory}>
+      <Router history={browserHistory} basename="/your-folder-name-in-github.io">
         <h1>Simple Banking App goes here</h1>
         <Switch>
           <Route path="/dashboard">
