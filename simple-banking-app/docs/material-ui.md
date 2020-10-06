@@ -1,7 +1,7 @@
 # Material - UI Framework
 
 ## Install Material UI Libraries.
-Below modules are separated in to scoped modules.  
+Below `material-ui` modules are separated in to scoped modules.  
 What is Scope modules - A scope allows you to create a package with the same name as a package created by another user or Org without conflict, Refer - https://docs.npmjs.com/about-scopes / https://docs.npmjs.com/using-npm/scope.html   
 
 ```
@@ -9,21 +9,24 @@ npm i -S @material-ui/core @material-ui/icons @material-ui/lab @material-ui/styl
 ```
 
 ## Theme Settings.
-This is mainly to customize the color, spacing, fonts etc.
+Now we installed `material-ui` module which will give predefined styles, colors etc.  
+So, we have to customize as per our App design and colors.  
+These files is mainly to customize the color, spacing, fonts etc.
 
 ### Breakpoints.
-Create Breakpoints File in `src/theme/palette.js`.  
+Create Breakpoints File in `src/theme/breakpoints.js`.  
+This is mainly to detect device by their width. This is also called RWD (Responsive Web Design).  
 What is Breakpoints - These are various device width to detect whether its Tablet, Mobile or Desktop.  
 Refer - https://material-ui.com/customization/breakpoints/  
 
 ```
 export default {
   values: {
-    xs: 0,
-    sm: 360,
-    md: 600,
-    lg: 1024,
-    xl: 1280,
+    xs: 0, // Extra Small.
+    sm: 360, // Small - Mobiles
+    md: 600, // Medium - Tablet Potrait
+    lg: 1024, // Large - Tablet Landscape
+    xl: 1280, // Extra Large Desktop
   }
 };
 ```
@@ -95,7 +98,7 @@ export default {
 
 ### Typography
 Create Typography File in `src/theme/typography.js`.  
-Typography is for various Text in App.  
+Typography is for various Text in App similar h1-h6, span etc. 
 
 ```
 import palette from './palette';
@@ -145,9 +148,9 @@ export default {
 };
 ```
 
-### Create Your Them extended from `material-ui`.
+### Create Your Theme extended from `material-ui`.
 Create Theme File / Main index in `src/theme/index.js`.  
-
+This file will include pallete, breakpoints, typography file. 
 ```
 import { createMuiTheme } from '@material-ui/core';
 
