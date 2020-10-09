@@ -1,7 +1,10 @@
 import React, { Fragment } from 'react';
+import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { ThemeProvider } from '@material-ui/styles';
+
+import store from './store';
 import theme from './theme';
 
 // Component.
@@ -17,19 +20,21 @@ import {
 export default function App() {
   return (
     <Fragment>
-      <ThemeProvider theme={theme}>
-        <Header />
-        <Router history={browserHistory}>
-          <Switch>
-            <Route exact path="/">
-              <SignIn />
-            </Route>
-            <Route exact path="/dashboard">
-              <Dashboard />
-            </Route>
-          </Switch>
-        </Router>
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <Header />
+          <Router history={browserHistory}>
+            <Switch>
+              <Route exact path="/">
+                <SignIn />
+              </Route>
+              <Route exact path="/dashboard">
+                <Dashboard />
+              </Route>
+            </Switch>
+          </Router>
+        </ThemeProvider>
+      </Provider>
     </Fragment>
   );
 };

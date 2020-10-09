@@ -3,7 +3,7 @@
 Let's discuss about App State Management Module which means storing data of the App when routed one page to another.
 
 ```
-npm i -S redux react-redux react-redux
+npm i -S redux react-redux axios
 ```
 
 ## Reducer - Action Types.
@@ -16,7 +16,8 @@ export const DONE_LOADING = "DONE_LOADING";
 ```
 
 ## Reducer - Loader
-Create File `src/store/reducers/loader.js`
+Create File `src/store/reducers/loader.js`  
+
 ```
 import { IS_LOADING, DONE_LOADING } from "../actionTypes";
 
@@ -43,3 +44,92 @@ export default (state = initialState, action = {}) => {
 ## Reducer - Main Index
 Create File `src/store/index.js`.
 
+```
+import loader from './loader'
+import { combineReducers } from 'redux'
+
+const rootReducer = combineReducers({
+  loader,
+})
+
+export default rootReducer
+```
+
+## Action - Loader
+Create File `src/store/actions/loader.js`
+
+```
+import { IS_LOADING, DONE_LOADING } from '../actionTypes';
+
+export function loading() {
+  return { type: IS_LOADING };
+};
+
+export function doneLoading() {
+  return { type: DONE_LOADING };
+}
+```
+
+## Action - Main Index
+Create File - `src/store/actions/index.js`
+
+```
+import { ADD_ARTICLE } from "../actionTypes";
+
+export function addArticle(payload) {
+  return { type: ADD_ARTICLE, payload };
+}
+```
+
+## Store - Main Index
+Create File - `src/store/index.js`  
+
+```
+import { createStore } from "redux";
+import rootReducer from "./reducers";
+
+const store = createStore(rootReducer);
+
+export default store;
+```
+
+### Main App Component - Add Redux
+Update File `simple-banking-app/src/App.js`.
+
+```
+import { Provider } from 'react-redux';
+```
+
+### Main App Component - Add Store
+Update File `simple-banking-app/src/App.js`.
+
+```
+import store from './store';
+```
+
+### Main App Component - Update Provider Component.
+Update File `simple-banking-app/src/App.js`.
+
+```
+export default function App() {
+  return (
+    <Fragment>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <Header />
+          <Router history={browserHistory}>
+            <Switch>
+              <Route exact path="/">
+                <SignIn />
+              </Route>
+              <Route exact path="/dashboard">
+                <Dashboard />
+              </Route>
+            </Switch>
+          </Router>
+        </ThemeProvider>
+      </Provider>
+    </Fragment>
+  );
+};
+```
