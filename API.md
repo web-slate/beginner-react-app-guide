@@ -3,12 +3,12 @@ Fake JSON API services for banking application
 
 ## Resources
 ```
-https://my-json-server.typicode.com/shangan23/banking-api/users
-https://my-json-server.typicode.com/shangan23/banking-api/accounts
-https://my-json-server.typicode.com/shangan23/banking-api/transactions
+https://my-json-server.typicode.com/web-slate/beginner-react-app-guide/users
+https://my-json-server.typicode.com/web-slate/beginner-react-app-guide/accounts
+https://my-json-server.typicode.com/web-slate/beginner-react-app-guide/transactions
 ```
 
-### [Users](https://my-json-server.typicode.com/shangan23/banking-api/users)
+### [Users](https://my-json-server.typicode.com/web-slate/beginner-react-app-guide/users)
 ```
 GET    /users
 GET    /users/1
@@ -17,7 +17,7 @@ PUT    /users/1
 PATCH  /users/1
 DELETE /users/1
 ```  
-### [Accounts](https://my-json-server.typicode.com/shangan23/banking-api/accounts)
+### [Accounts](https://my-json-server.typicode.com/web-slate/beginner-react-app-guide/accounts)
 
 ```
 GET    /accounts
@@ -28,7 +28,7 @@ PATCH  /accounts/1
 DELETE /accounts/1
 ```
 
-### [Transactions](https://my-json-server.typicode.com/shangan23/banking-api/transactions)
+### [Transactions](https://my-json-server.typicode.com/web-slate/beginner-react-app-guide/transactions)
 
 ```
 GET    /transactions

@@ -34,6 +34,39 @@
             "txn_currency": "rupee",
             "txn_comments": "refund",
             "status": "completed"
+        },
+        {
+            "id":"2",
+            "from_account_no": "021000021",
+            "beneficiary_account_no": "011401533",
+            "beneficiary_account_name": "neckermann de",
+            "beneficiary_bank_branch_code": "HDFC0000003",
+            "txn_amount": "800",
+            "txn_currency": "rupee",
+            "txn_comments": "settlement",
+            "status": "completed"
+        },
+        {
+            "id":"3",
+            "from_account_no": "011401533",
+            "beneficiary_account_no": "021000021",
+            "beneficiary_account_name": "John Smith",
+            "beneficiary_bank_branch_code": "SBIN",
+            "txn_amount": "3000",
+            "txn_currency": "rupee",
+            "txn_comments": "monthly bill",
+            "status": "pending"
+        },
+        {
+            "id":"4",
+            "from_account_no": "021000021",
+            "beneficiary_account_no": "011401533",
+            "beneficiary_account_name": "neckermann de",
+            "beneficiary_bank_branch_code": "HDFC0000003",
+            "txn_amount": "50000",
+            "txn_currency": "rupee",
+            "txn_comments": "House rent",
+            "status": "pending"
         }
     ],
     "users": [
