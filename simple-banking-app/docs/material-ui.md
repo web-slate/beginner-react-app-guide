@@ -219,7 +219,7 @@ export default function Header() {
 }
 ```
 
-## Add Theme Provider in `App,js`.
+## Add Theme Provider in `App.js`.
 Now time to import the theme and our first styled material component in our App.  
 
 ```
@@ -230,7 +230,7 @@ import theme from './theme';
 import Header from './components/Header';
 ```
 
-## Add `ThemeProvider` below `Fragment` in `App,js`.  
+## Add `ThemeProvider` below `Fragment` in `App.js`.  
 
 ```
 export default function App() {
