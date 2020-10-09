@@ -1,0 +1,55 @@
+{
+    "accounts": [
+        {
+            "id":"1",
+            "account_number": "021000021",
+            "account_name": "John Smith",
+            "first_name": "John",
+            "last_name": "Smith",
+            "bank_branch_code": "SBIN",
+            "aadhar_number": "1q2w3e4r5t6y",
+            "country": "INDIA",
+            "txn_currency": "rupee"
+        },
+        {
+            "id":"2",
+            "account_number": "011401533",
+            "account_name": "neckermann de",
+            "first_name": "neckermann",
+            "last_name": "de",
+            "bank_branch_code": "HDFC0000003",
+            "aadhar_number": "6y5t4r3e2w1q",
+            "country": "INDIA",
+            "txn_currency": "rupee"
+        }
+    ],
+    "transactions": [
+        {
+            "id":"1",
+            "from_account_no": "011401533",
+            "beneficiary_account_no": "021000021",
+            "beneficiary_account_name": "John Smith",
+            "beneficiary_bank_branch_code": "SBIN",
+            "txn_amount": "200",
+            "txn_currency": "rupee",
+            "txn_comments": "refund",
+            "status": "completed"
+        }
+    ],
+    "users": [
+        {
+            "user_name": "john",
+            "first_name": "John",
+            "last_name": "Smith",
+            "aadhar_number": "1q2w3e4r5t6y",
+            "country": "INDIA"
+        },
+        {
+            "user_name": "neck",
+            "first_name": "neckermann",
+            "last_name": "de",
+            "aadhar_number": "6y5t4r3e2w1q",
+            "country": "INDIA"
+        }
+    ]
+}
