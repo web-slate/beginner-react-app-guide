@@ -1,0 +1,1 @@
+npm i -S redux react-redux react-redux
