@@ -10,31 +10,27 @@ npm i -S redux react-redux axios
 Create File `src/store/actionTypes.js`
 
 ```
-// Loaders.
-export const IS_LOADING = "IS_LOADING";
-export const DONE_LOADING = "DONE_LOADING";
+// User.
+export const LOG_IN = "LOG_IN";
+export const LOG_OUT = "LOG_OUT";
 ```
 
-## Reducer - Loader
-Create File `src/store/reducers/loader.js`  
+## Reducer - User
+Create File `src/store/reducers/user.js`  
 
 ```
-import { IS_LOADING, DONE_LOADING } from "../actionTypes";
+import { LOG_IN, LOG_OUT } from "../actionTypes";
 
-const initialState = {
-  loading: false,
-};
+const initialState = {};
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case IS_LOADING:
+    case LOG_IN:
       return {
-        loading: true,
+        userName: 'Dan Abramov'
       };
-    case DONE_LOADING:
-      return {
-        loading: false,
-      };
+    case LOG_OUT:
+      return {};
     default:
       return state;
   }
@@ -45,52 +41,30 @@ export default (state = initialState, action = {}) => {
 Create File `src/store/index.js`.
 
 ```
-import loader from './loader'
+import user from './user'
+
 import { combineReducers } from 'redux'
 
 const rootReducer = combineReducers({
-  loader,
+  user,
 })
 
 export default rootReducer
 ```
 
-## Action - Loader
-Create File `src/store/actions/loader.js`
+## Action - User
+Create File `src/store/actions/user.js`
 
 ```
-import { IS_LOADING, DONE_LOADING } from '../actionTypes';
+import { LOG_IN, LOG_OUT } from '../actionTypes';
 
-export function loading() {
-  return { type: IS_LOADING };
+export function logIn() {
+  return { type: LOG_IN };
 };
 
-export function doneLoading() {
-  return { type: DONE_LOADING };
+export function logOut() {
+  return { type: LOG_OUT };
 }
-```
-
-## Action - Main Index
-Create File - `src/store/actions/index.js`
-
-```
-import { ADD_ARTICLE } from "../actionTypes";
-
-export function addArticle(payload) {
-  return { type: ADD_ARTICLE, payload };
-}
-```
-
-## Store - Main Index
-Create File - `src/store/index.js`  
-
-```
-import { createStore } from "redux";
-import rootReducer from "./reducers";
-
-const store = createStore(rootReducer);
-
-export default store;
 ```
 
 ### Main App Component - Add Redux
@@ -133,3 +107,130 @@ export default function App() {
   );
 };
 ```
+
+### Sign In Module - Component.
+Update File - `simple-banking-app/src/modules/SignIn/index.js`.  
+  
+Import Connect HOC (Higher Order Component) from Redux.
+```
+import { connect } from 'react-redux'
+```
+
+### Add User Actions.
+```
+
+// Actions.
+import { logIn } from '../../store/actions/user'
+```
+
+### Create `mapStateToProps` method helps to get data from store then we need to pass it `connect` Method.  
+After Passing to `connect` Method this will passed as props to our component.  
+Get data from Store which means from `User` Reducer. you can access as `props.userName`.  
+Here user object from state generated from `src/store/reducers/user.js` where you defined initialState.  
+```
+const mapStateToProps = state => ({
+  userName: state.user.userName
+})
+```
+
+### Create `mapDispatchToProps` method helps to trigger actions from store then we need to pass it `connect` Method. 
+After Passing to `connect` Method this will passed as props to our component.   
+Trigger the action to Store to `User` Action. you can access as `props.logIn`.  
+We imported `src/store/actions/user.js` and dispatch the login method.  
+```
+const mapDispatchToProps = dispatch => ({
+  logIn: id => dispatch(logIn())
+})
+```
+
+### Remove the first export approach which is plain.  
+Now, Add new Export approach where we called `connect` HOC Method and passed our two maps Method.  
+```
+// export default withRouter(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignIn));
+```
+
+### Add Welcome Paragraph in Login Page.  
+```
+<p>Welcome {props.userName}</p>
+```
+
+### Remove the Router library link component which will directly redirect to dashboard.  
+Add Login Anchor and onClick you trigger the `logIn` action then redirect to `dashboard` page.  
+
+```
+{/* <Link to="dashboard">Log in</Link> */}
+    <a href="#" onClick={e => {
+      e.preventDefault();
+      props.logIn();
+      history.push('dashboard');
+    }}>Login Now</a>
+```
+
+### If you lazy still, then copy this content below to `simple-banking-app/src/modules/SignIn/index.js`.  
+```
+import React, { Fragment } from 'react';
+import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { withRouter, Link } from 'react-router-dom';
+
+// Actions.
+import { logIn } from '../../store/actions/user'
+
+function SignIn(props) {
+  const history = useHistory();
+  return (
+    <Fragment>
+      <h4>Login Form Goes here</h4>
+      <p>Welcome {props.userName}</p>
+      {/* <Link to="dashboard">Log in</Link> */}
+      <a href="#" onClick={e => {
+        e.preventDefault();
+        props.logIn();
+        history.push('dashboard');
+      }}>Login Now</a>
+    </Fragment>
+  );
+};
+
+const mapStateToProps = state => ({
+  userName: state.user.userName
+})
+
+const mapDispatchToProps = dispatch => ({
+  logIn: id => dispatch(logIn())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignIn));
+```
+
+## Now Show Logged In User name in Dashboard.  
+Update File - `simple-banking-app/src/modules/Dashboard/index.js`  
+
+### Import Reduce Hooks to simplify the part.
+```
+import { useSelector, useDispatch } from 'react-redux';
+```
+
+### Now you can call these methods inside `Dashboard` Component.
+
+```
+  const dispatch = useDispatch();
+  const userName = useSelector(state => state.user.userName);
+```
+
+### Add Welcome Note with LoggIn Username.
+
+```
+<p>Welcome {userName}</p>
+```
+
+### Then Add Logout link with dispatch the `logout` action.  
+```
+<a href="#" onClick={e => {
+  e.preventDefault();
+  dispatch(logOut());
+  history.push('/');
+}}>Logout</a>
+```
+
