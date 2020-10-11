@@ -5,6 +5,7 @@ import { withRouter, Link } from 'react-router-dom';
 
 // Actions.
 import { logIn } from '../../store/actions/user'
+import { loading } from '../../store/actions/loader';
 
 function SignIn(props) {
   const history = useHistory();
@@ -16,7 +17,10 @@ function SignIn(props) {
       <a href="#" onClick={e => {
         e.preventDefault();
         props.logIn();
-        history.push('dashboard');
+        props.setLoading();
+        setTimeout(function(){ 
+          history.push('dashboard');
+         }, 5000);
       }}>Login Now</a>
     </Fragment>
   );
@@ -27,7 +31,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  logIn: id => dispatch(logIn())
+  logIn: id => dispatch(logIn()),
+  setLoading: id => dispatch(loading()),
 })
 
 // export default withRouter(SignIn);

@@ -9,6 +9,7 @@ import theme from './theme';
 
 // Component.
 import Header from './components/Header';
+import PageLoader from './components/PageLoader';
 
 const browserHistory = createBrowserHistory();
 
@@ -22,6 +23,7 @@ export default function App() {
     <Fragment>
       <Provider store={store}>
         <ThemeProvider theme={theme}>
+          <PageLoader />
           <Header />
           <Router history={browserHistory}>
             <Switch>
